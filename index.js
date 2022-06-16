@@ -200,8 +200,9 @@ const workspace = process.env.GITHUB_WORKSPACE;
           'but that doesnt matter because you dont need that git commit, thats only for "actions/checkout@v1"',
       );
     }
-
+    
     const remoteRepo = `https://${process.env.GITHUB_ACTOR}:${process.env.GITHUB_TOKEN}@github.com/${process.env.GITHUB_REPOSITORY}.git`;
+    console.log('remoteRepo string: ' + remoteRepo);
     if (process.env['INPUT_SKIP-TAG'] !== 'true') {
       await runInWorkspace('git', ['tag', newVersion]);
       if (process.env['INPUT_SKIP-PUSH'] !== 'true') {
